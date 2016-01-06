@@ -91,7 +91,7 @@ else
 endif
 
 ifeq ($(PORTNAME),darwin)
-	override LDFLAGS += -undefined dynamic_lookup -bundle_loader $(shell $(PG_CONFIG) --bindir)/postgres
+	override LDFLAGS := $(PY_LIBSPEC) $(PY_LDFLAGS) -undefined dynamic_lookup $(LDFLAGS)
 endif
 
 PYTHON_TEST_VERSION ?= $(python_version)
